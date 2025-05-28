@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delivery Time Prediction</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        .card {
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            backdrop-filter: blur(10px);
+            background: rgba(255,255,255,0.95);
+        }
+        .btn-primary {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            border: none;
+            border-radius: 25px;
+            padding: 12px 30px;
+            transition: all 0.3s ease;
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        .form-control, .form-select {
+            border-radius: 10px;
+            border: 2px solid #e9ecef;
+            transition: all 0.3s ease;
+        }
+        .form-control:focus, .form-select:focus {
+            border-color: #667eea;
+            box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+        }
+        .navbar {
+            background: rgba(255,255,255,0.1) !important;
+            backdrop-filter: blur(10px);
+        }
+        .icon-box {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                <i class="fas fa-truck-fast me-2"></i>
+                Delivery Predictor
+            </a>
+            <div class="navbar-nav ms-auto">
+                <a class="nav-link" href="/">Live Prediction</a>
+                <a class="nav-link" href="/batch">Batch Upload</a>
+                <a class="nav-link" href="/docs">API Docs</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="card">
+                    <div class="card-body p-5">
+                        <div class="icon-box">
+                            <i class="fas fa-clock fa-2x"></i>
+                        </div>
+                        <h2 class="text-center mb-4">Delivery Time Prediction</h2>
+                        <p class="text-center text-muted mb-4">Enter delivery details to get an instant prediction</p>
+                        
+                        <form action="/predict/form" method="post" id="predictionForm">
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="distance_km" class="form-label">
+                                        <i class="fas fa-route me-2"></i>Distance (km)
+                                    </label>
+                                    <input type="number" step="0.01" class="form-control" id="distance_km" 
+                                           name="distance_km" required placeholder="e.g., 7.93">
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="preparation_time_min" class="form-label">
+                                        <i class="fas fa-hourglass-start me-2"></i>Preparation Time (min)
+                                    </label>
+                                    <input type="number" step="0.01" class="form-control" id="preparation_time_min" 
+                                           name="preparation_time_min" required placeholder="e.g., 12">
+                                </div>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="weather" class="form-label">
+                                        <i class="fas fa-cloud-sun me-2"></i>Weather Condition
+                                    </label>
+                                    <select class="form-select" id="weather" name="weather" required>
+                                        <option value="">Select weather...</option>
+                                        <option value="Clear">Clear</option>
+                                        <option value="Rainy">Rainy</option>
+                                        <option value="Windy">Windy</option>
+                                        <option value="Foggy">Foggy</option>
+                                        <option value="Snowy">Snowy</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="traffic_level" class="form-label">
+                                        <i class="fas fa-traffic-light me-2"></i>Traffic Level
+                                    </label>
+                                    <select class="form-select" id="traffic_level" name="traffic_level" required>
+                                        <option value="">Select traffic level...</option>
+                                        <option value="Low">Low</option>
+                                        <option value="Medium">Medium</option>
+                                        <option value="High">High</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="time_of_day" class="form-label">
+                                        <i class="fas fa-clock me-2"></i>Time of Day
+                                    </label>
+                                    <select class="form-select" id="time_of_day" name="time_of_day" required>
+                                        <option value="">Select time...</option>
+                                        <option value="Morning">Morning</option>
+                                        <option value="Afternoon">Afternoon</option>
+                                        <option value="Evening">Evening</option>
+                                        <option value="Night">Night</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="vehicle_type" class="form-label">
+                                        <i class="fas fa-motorcycle me-2"></i>Vehicle Type
+                                    </label>
+                                    <select class="form-select" id="vehicle_type" name="vehicle_type" required>
+                                        <option value="">Select vehicle...</option>
+                                        <option value="Bike">Bike</option>
+                                        <option value="Scooter">Scooter</option>
+                                        <option value="Car">Car</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="mb-4">
+                                <label for="courier_experience_yrs" class="form-label">
+                                    <i class="fas fa-user-check me-2"></i>Courier Experience (years)
+                                </label>
+                                <input type="number" step="0.1" class="form-control" id="courier_experience_yrs" 
+                                       name="courier_experience_yrs" required placeholder="e.g., 1.5">
+                            </div>
+                            
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-primary btn-lg">
+                                    <i class="fas fa-magic me-2"></i>
+                                    Predict Delivery Time
+                                </button>
+                            </div>
+                        </form>
+                        
+                        <div class="text-center mt-4">
+                            <p class="text-muted">
+                                Need to process multiple deliveries? 
+                                <a href="/batch" class="text-decoration-none">Try batch upload</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Add loading state to form submission
+        document.getElementById('predictionForm').addEventListener('submit', function(e) {
+            const submitBtn = this.querySelector('button[type="submit"]');
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Predicting...';
+            submitBtn.disabled = true;
+        });
+    </script>
+</body>
+</html>

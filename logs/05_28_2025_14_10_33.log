@@ -1,0 +1,12 @@
+[ 2025-05-28 14:11:23,056 ] 168 root - INFO - Received form prediction request: {'Distance_km': 7.93, 'Weather': 'Windy', 'Traffic_Level': 'Medium', 'Time_of_Day': 'Afternoon', 'Vehicle_Type': 'Scooter', 'Preparation_Time_min': 30.0, 'Courier_Experience_yrs': 4.0}
+[ 2025-05-28 14:11:23,058 ] 59 root - INFO - Loading object from: final_model/preprocessor.pkl
+[ 2025-05-28 14:11:23,332 ] 66 root - INFO - Successfully loaded object from: final_model/preprocessor.pkl
+[ 2025-05-28 14:11:23,332 ] 59 root - INFO - Loading object from: final_model/model.pkl
+[ 2025-05-28 14:11:23,372 ] 66 root - INFO - Successfully loaded object from: final_model/model.pkl
+[ 2025-05-28 14:11:23,380 ] 182 root - INFO - Form prediction result: 55.64 minutes
+[ 2025-05-28 14:12:11,822 ] 168 root - INFO - Received form prediction request: {'Distance_km': 40.0, 'Weather': 'Foggy', 'Traffic_Level': 'Low', 'Time_of_Day': 'Evening', 'Vehicle_Type': 'Scooter', 'Preparation_Time_min': 45.0, 'Courier_Experience_yrs': 4.0}
+[ 2025-05-28 14:12:11,825 ] 59 root - INFO - Loading object from: final_model/preprocessor.pkl
+[ 2025-05-28 14:12:11,834 ] 66 root - INFO - Successfully loaded object from: final_model/preprocessor.pkl
+[ 2025-05-28 14:12:11,834 ] 59 root - INFO - Loading object from: final_model/model.pkl
+[ 2025-05-28 14:12:11,844 ] 66 root - INFO - Successfully loaded object from: final_model/model.pkl
+[ 2025-05-28 14:12:11,863 ] 182 root - INFO - Form prediction result: 109.94 minutes

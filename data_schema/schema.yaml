@@ -1,0 +1,30 @@
+
+##write schema for the data type to compare later
+
+columns:
+- Order_ID: int64
+- Distance_km: float64
+- Weather: object 
+- Traffic_Level: object
+- Time_of_Day: object 
+- Vehicle_Type: object 
+- Preparation_Time_min: int64  
+- Courier_Experience_yrs: float64
+- Delivery_Time_min: int64 
+
+
+numerical_columns:
+- Order_ID: int64
+- Distance_km: float64 
+- Preparation_Time_min: int64  
+- Courier_Experience_yrs: float64
+- Delivery_Time_min: int64 
+
+categorical_columns:
+- Weather: object 
+- Traffic_Level: object
+- Time_of_Day: object 
+- Vehicle_Type: object 
+
+
+

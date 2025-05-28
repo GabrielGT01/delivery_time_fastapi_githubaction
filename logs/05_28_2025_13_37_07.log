@@ -1,0 +1,6 @@
+[ 2025-05-28 13:38:52,616 ] 101 root - INFO - Received live prediction request: {'Distance_km': 7.93, 'Weather': 'Windy', 'Traffic_Level': 'Low', 'Time_of_Day': 'Afternoon', 'Vehicle_Type': 'Scooter', 'Preparation_Time_min': 12.0, 'Courier_Experience_yrs': 1.0}
+[ 2025-05-28 13:38:52,626 ] 59 root - INFO - Loading object from: final_model/preprocessor.pkl
+[ 2025-05-28 13:38:52,906 ] 66 root - INFO - Successfully loaded object from: final_model/preprocessor.pkl
+[ 2025-05-28 13:38:52,906 ] 59 root - INFO - Loading object from: final_model/model.pkl
+[ 2025-05-28 13:38:52,948 ] 66 root - INFO - Successfully loaded object from: final_model/model.pkl
+[ 2025-05-28 13:38:52,962 ] 122 root - INFO - Live prediction result: 42.57 minutes

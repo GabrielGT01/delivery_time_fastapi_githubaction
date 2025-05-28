@@ -1,0 +1,15 @@
+certifi
+fastapi
+jinja2
+joblib
+mlflow
+numpy
+pandas
+PyYAML
+python-dotenv
+python-multipart
+pymongo[srv]==3.12
+scikit-learn
+uvicorn
+pymongo==3.12
+numpy

@@ -1,0 +1,43 @@
+Courier_Experience_yrs:
+  drift_status: &id001 !!python/object/apply:numpy.core.multiarray.scalar
+  - !!python/object/apply:numpy.dtype
+    args:
+    - b1
+    - false
+    - true
+    state: !!python/tuple
+    - 3
+    - '|'
+    - null
+    - null
+    - null
+    - -1
+    - -1
+    - 0
+  - !!binary |
+    AA==
+  p_value: 0.8924618618040395
+Delivery_Time_min:
+  drift_status: *id001
+  p_value: 0.9077606844925846
+Distance_km:
+  drift_status: *id001
+  p_value: 0.8033963019278049
+Order_ID:
+  drift_status: *id001
+  p_value: 0.08933005080175084
+Preparation_Time_min:
+  drift_status: *id001
+  p_value: 0.7861452029038115
+Time_of_Day:
+  drift_status: *id001
+  p_value: 0.9608013122346271
+Traffic_Level:
+  drift_status: *id001
+  p_value: 0.4679925826426519
+Vehicle_Type:
+  drift_status: *id001
+  p_value: 0.9657347736826876
+Weather:
+  drift_status: *id001
+  p_value: 0.9969272262681007

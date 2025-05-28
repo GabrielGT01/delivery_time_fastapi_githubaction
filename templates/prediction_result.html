@@ -1,0 +1,101 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Result - Delivery Time Predictor</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        .card {
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            backdrop-filter: blur(10px);
+            background: rgba(255,255,255,0.95);
+        }
+        .result-card {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .result-time {
+            font-size: 3rem;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+        .btn-primary {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            border: none;
+            border-radius: 25px;
+            padding: 12px 30px;
+        }
+        .navbar {
+            background: rgba(255,255,255,0.1) !important;
+            backdrop-filter: blur(10px);
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                <i class="fas fa-truck-fast me-2"></i>
+                Delivery Predictor
+            </a>
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="result-card">
+                    <i class="fas fa-check-circle fa-3x mb-3"></i>
+                    <h2>Prediction Complete!</h2>
+                    <div class="result-time">{{ predicted_time }} minutes</div>
+                    <p class="lead">Estimated delivery time for your order</p>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <h5><i class="fas fa-info-circle me-2"></i>Input Details</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <p><strong>Distance:</strong> {{ input_data.Distance_km }} km</p>
+                                <p><strong>Weather:</strong> {{ input_data.Weather }}</p>
+                                <p><strong>Traffic Level:</strong> {{ input_data.Traffic_Level }}</p>
+                                <p><strong>Time of Day:</strong> {{ input_data.Time_of_Day }}</p>
+                            </div>
+                            <div class="col-md-6">
+                                <p><strong>Vehicle Type:</strong> {{ input_data.Vehicle_Type }}</p>
+                                <p><strong>Preparation Time:</strong> {{ input_data.Preparation_Time_min }} min</p>
+                                <p><strong>Courier Experience:</strong> {{ input_data.Courier_Experience_yrs }} years</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="text-center mt-4">
+                    <a href="/" class="btn btn-primary me-3">
+                        <i class="fas fa-plus me-2"></i>New Prediction
+                    </a>
+                    <a href="/batch" class="btn btn-outline-light">
+                        <i class="fas fa-upload me-2"></i>Batch Upload
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
