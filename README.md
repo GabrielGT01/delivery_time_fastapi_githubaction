@@ -1,6 +1,6 @@
 # 📦 Delivery Time Prediction App
 
-A machine learning-powered web application that predicts food delivery times based on various factors. Built with FastAPI, Docker, and deployed using GitHub Actions to AWS services like ECR, ECS, and EC2.
+A machine learning-powered web application that predicts food delivery times based on various factors. Built with FastAPI, Docker, and deployed using GitHub Actions to AWS services like ECR, ECS.
 
 ---
 
@@ -21,19 +21,20 @@ These features are used to train a regression model that predicts the delivery t
 ## 🧠 Machine Learning Workflow
 
 1. **Data Preprocessing:**
+   - Importing data from Mongo Db
    - Handling missing values.
    - Encoding categorical variables.
    - Feature scaling.
 
-2. **Model Training:**
+3. **Model Training:**
    - Utilized algorithms like XGBoost, Random Forest, and Linear Regression.
    - Evaluated models using metrics such as RMSE and R² score.
 
-3. **Model Selection:**
+4. **Model Selection:**
    - Selected the best-performing model based on evaluation metrics.
    - Serialized the model using `joblib` for deployment.
 
-4. **Experiment Tracking:**
+5. **Experiment Tracking:**
    - Used MLflow to track experiments and model performance.
 
 ---
@@ -93,6 +94,10 @@ This project features an automated deployment pipeline configured using GitHub A
 ## ☁️ Cloud Infrastructure
 
 This project directly uses the following AWS services:
+
+### 1. Mongo DB(Database)
+- **Purpose:** Used to host the dataset from which the model was trained.
+
 
 ### 1. Amazon Elastic Container Registry (ECR)
 - **Purpose:** Stores Docker images securely.
